@@ -26,6 +26,10 @@ class Config extends DefaultStdClass
     const WSDL_ATENDE_CLIENTE_DEVELOPMENT = 'https://apphom.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl';
 
     const WSDL_CAL_PRECO_PRAZO = 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx?WSDL';
+    
+    const WSDL_LOGISTICA_REVERSA_PRODUCTION = 'http://webservicescol.correios.com.br/ScolWeb/WebServiceScol?wsdl'; 
+    
+    const WSDL_LOGISTICA_REVERSA_DEVELOPMENT = 'http://webservicescolhomologacao.correios.com.br/ScolWeb/WebServiceScol?wsdl'; 
 
     /**
      * Endereço para o WSDL AtendeCliente.
@@ -33,6 +37,13 @@ class Config extends DefaultStdClass
      * @var string
      */
     protected $wsdlAtendeCliente = self::WSDL_ATENDE_CLIENTE_DEVELOPMENT;
+    
+    /**
+     * Endereço para o WSDL LogisticaReversa.
+     * Esse WSDL possui duas versões, uma para o ambiente de produção e outra para o ambiente de desenvolvimento.
+     * @var string
+     */
+    protected $wsdlLogisticaReversa = self::WSDL_LOGISTICA_REVERSA_DEVELOPMENT;
 
     /**
      * @var string
@@ -152,6 +163,17 @@ class Config extends DefaultStdClass
 
         return $this;
     }
+    
+    /**
+     * @param string $wsdlLogisticaReversa
+     * @return $this
+     */
+    public function setWsdlLogisticaReversa($wsdlLogisticaReversa)
+    {
+        $this->wsdlLogisticaReversa = $wsdlLogisticaReversa;
+
+        return $this;
+    }
 
     /**
      * @param string $wsdlCalPrecoPrazo
@@ -170,6 +192,15 @@ class Config extends DefaultStdClass
     public function getWsdlCalcPrecoPrazo()
     {
         return $this->wsdlCalPrecoPrazo;
+    }
+    
+    
+     /**
+     * @return string
+     */
+    public function getWsdlLogisticaReversa()
+    {
+        return $this->wsdlLogisticaReversa;
     }
 
     /**
