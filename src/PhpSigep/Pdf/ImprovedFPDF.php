@@ -1,7 +1,9 @@
 <?php
 namespace PhpSigep\Pdf;
 
-class ImprovedFPDF extends \FPDF
+use fpdf\FPDF;
+
+class ImprovedFPDF extends FPDF
 {
 
     /**
