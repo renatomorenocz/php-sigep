@@ -13,7 +13,8 @@ header('Content-Type: text/html; charset=utf-8');
 
 // Se você não usou o composer é necessário carregar o script Boostrap.php manualmente.
 // Caso você tenha usado o composer o Bootstrap PHP será carregado automáticamente pelo autoload (quando necessário).
-require_once __DIR__ . '/../src/PhpSigep/Bootstrap.php';
+//require_once __DIR__ . '/../src/PhpSigep/Bootstrap.php';
+require_once __DIR__. '/../vendor/autoload.php';
 
 $accessDataParaAmbienteDeHomologacao = new \PhpSigep\Model\AccessDataHomologacao();
 
