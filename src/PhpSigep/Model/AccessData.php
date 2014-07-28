@@ -36,6 +36,10 @@ class AccessData extends AbstractModel
      */
     protected $anoContrato;
     /**
+     * @var string
+     */
+    protected $codigoServico;
+    /**
      * @var Diretoria
      */
     protected $diretoria;
@@ -167,5 +171,21 @@ class AccessData extends AbstractModel
     {
         $this->diretoria = $diretoria;
     }
+    
+    /**
+     * @return int
+     */
+    public function getCodigoServico() {
+        return $this->codigoServico;
+    }
+
+    /**
+     * @param string $codigoServico
+     */
+    public function setCodigoServico($codigoServico) {
+        $this->codigoServico = $codigoServico;        
+    }
+
+
 
 }
