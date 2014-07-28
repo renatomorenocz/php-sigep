@@ -108,4 +108,16 @@ class Real implements ServiceInterface
         $service = new ServiceImplementation\RastrearObjeto();
         return $service->execute($params);
     }
+    
+    
+    /**
+     *
+     * @param \PhpSigep\Model\SolicitaLogisticaReversa $params
+     * @return \PhpSigep\Services\Result<\PhpSigep\Model\SolicitaLogisticaReversaResultado[]>
+     */
+    public function solicitaLogisticaReversa(\PhpSigep\Model\SolicitaLogisticaReversa $params)
+    {
+        $service = new ServiceImplementation\SolicitaLogisticaReversa();
+        return $service->execute($params);
+    }
 }

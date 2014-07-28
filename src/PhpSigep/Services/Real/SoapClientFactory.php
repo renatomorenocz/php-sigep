@@ -38,6 +38,23 @@ class SoapClientFactory
 
         return self::$_soapClient;
     }
+    
+    
+    public static function getSoapLogisticaReversa()
+    {
+        if (!self::$_soapClient) {
+            $wsdl = Bootstrap::getConfig()->getWsdlLogisticaReversa();
+
+            self::$_soapClient = new \SoapClient($wsdl, array(
+                "trace"              => Bootstrap::getConfig()->getEnv() != Config::ENV_PRODUCTION,
+                "exceptions"         => Bootstrap::getConfig()->getEnv() != Config::ENV_PRODUCTION,
+                'encoding'           => self::WEB_SERVICE_CHARSET,
+                'connection_timeout' => 60,
+            ));
+        }
+        
+        return self::$_soapClient;
+    }
 
     public static function getSoapCalcPrecoPrazo()
     {
