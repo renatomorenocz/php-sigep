@@ -39,7 +39,37 @@ class SolicitaPostagemReversa implements RealServiceInterface {
                 throw new Exception('Para usar este serviço você precisa setar o nome de usuário e senha.');
             }
 
-            $result = SoapClientFactory::getSoapLogisticaReversa()->solicitarPostagemReversa($soapArgs);
+            $r = SoapClientFactory::getSoapLogisticaReversa()->solicitarPostagemReversa($soapArgs);
+            
+            
+            $postagens = array();
+            
+            foreach ((array)$r->return->resultado_solicitacao as $postagem) {
+                if (!key_exists($postagem->numero_coleta, $postagens)){
+                    $postagens[$postagem->numero_coleta] = new \PhpSigep\Model\PostagemReversa();
+                    
+                    $postagens[$postagem->numero_coleta]->setTipo($postagem->tipo);
+                    $postagens[$postagem->numero_coleta]->setIdCliente($postagem->id_cliente);
+                    $postagens[$postagem->numero_coleta]->setNumeroColeta($postagem->numero_coleta);
+                    $postagens[$postagem->numero_coleta]->setPrazo($postagem->prazo);
+                    $postagens[$postagem->numero_coleta]->setDataSolicitacao($postagem->data_solicitacao);
+                    $postagens[$postagem->numero_coleta]->setHoraSolicitacao($postagem->hora_solicitacao);                    
+                } 
+                
+                $obj = new \PhpSigep\Model\ObjetoPostagemReversa();
+                $obj->setEtiqueta($postagem->numero_etiqueta);
+                $obj->setId($postagem->id_obj);
+                $obj->setStatus($postagem->status_objeto);
+                
+                $postagens[$postagem->numero_coleta]->addObj($obj);
+            }
+            
+            $postagemReversaResultado = new \PhpSigep\Model\PostagemReversaResultado();
+            $postagemReversaResultado->setPostagenReversas($postagens);
+            
+            $result->setResult($postagemReversaResultado);
+            
+            
         } catch (\Exception $e) {
             if ($e instanceof \SoapFault) {
                 $result->setIsSoapFault(true);

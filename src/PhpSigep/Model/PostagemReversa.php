@@ -5,7 +5,7 @@ namespace PhpSigep\Model;
 use PhpSigep\Bootstrap;
 use PhpSigep\InvalidArgument;
 
-class ObjetoPostagemReversa extends AbstractModel {
+class PostagemReversa extends AbstractModel {
 
     /**
      * @var string 
@@ -85,7 +85,8 @@ class ObjetoPostagemReversa extends AbstractModel {
     public function setHoraSolicitacao($horaSolicitacao) {
         $this->horaSolicitacao = $horaSolicitacao;
     }
-
-
-
+    
+    public function addObj($obj) {
+        $this->objetos[] = $obj;
+    }
 }
