@@ -4,7 +4,7 @@ use PhpSigep\Bootstrap;
 use PhpSigep\InvalidArgument;
 
 
-class SolicitaLogisticaReversa extends AbstractModel
+class SolicitaPostagemReversa extends AbstractModel
 {
 
     /**

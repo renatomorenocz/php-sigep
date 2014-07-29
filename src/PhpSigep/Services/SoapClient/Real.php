@@ -112,12 +112,12 @@ class Real implements ServiceInterface
     
     /**
      *
-     * @param \PhpSigep\Model\SolicitaLogisticaReversa $params
+     * @param \PhpSigep\Model\SolicitaPostagemReversa $params
      * @return \PhpSigep\Services\Result<\PhpSigep\Model\SolicitaLogisticaReversaResultado[]>
      */
-    public function solicitaLogisticaReversa(\PhpSigep\Model\SolicitaLogisticaReversa $params)
+    public function solicitaPostagemReversa(\PhpSigep\Model\SolicitaPostagemReversa $params)
     {
-        $service = new ServiceImplementation\SolicitaLogisticaReversa();
+        $service = new ServiceImplementation\SolicitaPostagemReversa();
         return $service->execute($params);
     }
 }
