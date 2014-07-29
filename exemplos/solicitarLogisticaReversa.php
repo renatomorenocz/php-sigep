@@ -67,8 +67,16 @@ $remetente->setUf('PR');
 $remetente->setCidade('Curitiba');
 $remetente->setSms(false);
 
-$objColeta = array();
-$objColeta[] = new \PhpSigep\Model\ObjetoColeta();       
+$objsColeta = array();
+
+$objColeta = new \PhpSigep\Model\ObjetoColeta();
+$objColeta->setId('BA:44');
+
+$objColeta2 = new \PhpSigep\Model\ObjetoColeta();
+$objColeta2->setId('BA:48');
+        
+        
+$objsColeta[] = $objColeta;       
 
 $coleta = new \PhpSigep\Model\Coleta();
 $coleta->setCklist(\PhpSigep\Model\Coleta::CHECKLIST_CELULAR);
@@ -78,7 +86,9 @@ $coleta->setAg(5);
 $coleta->setAr(true);
 $coleta->setTipo(\PhpSigep\Model\Coleta::TIPO_AUTORIZACAO_POSTAGEM);
 $coleta->setRemetente($remetente);
-$coleta->setObjetosColeta($objColeta);
+$coleta->setObjetosColeta($objsColeta);
+
+$objsColeta[] = $objColeta2;       
 
 $coleta2 = new \PhpSigep\Model\Coleta();
 $coleta2->setCklist(\PhpSigep\Model\Coleta::CHECKLIST_CELULAR);
@@ -88,7 +98,7 @@ $coleta2->setAg('05/08/2014');
 $coleta2->setAr(false);
 $coleta2->setTipo(\PhpSigep\Model\Coleta::TIPO_COLETA);
 $coleta2->setRemetente($remetente);
-$coleta2->setObjetosColeta($objColeta);
+$coleta2->setObjetosColeta($objsColeta);
 
 $coletas = array($coleta,$coleta2);
 
