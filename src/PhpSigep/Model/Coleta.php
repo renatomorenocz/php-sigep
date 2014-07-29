@@ -213,6 +213,8 @@ class Coleta extends AbstractModel {
     public function getServicosAdicionais() {
         return (array) $this->servicosAdicionais;
     }
+    
+    
 
     
 

@@ -23,6 +23,14 @@ class Destinatario extends AbstractModel
      * @var string
      */
     protected $telefone;
+    
+    /**
+     * DDD Destinatário.
+     * Não Obrigatório.
+     * Max length: 3     
+     * @var string
+     */
+    protected $ddd;
     /**
      * Celular do Destinatário.
      * Não Obrigatório.
@@ -49,7 +57,7 @@ class Destinatario extends AbstractModel
     protected $logradouro;
     /**
      * Complemento do endereço.
-     * Não obrigatório.
+     * Não obrigatório.Model
      * Max length: 30
      * Tag: complemento_destinatario
      * @var string
@@ -63,6 +71,14 @@ class Destinatario extends AbstractModel
      * @var string
      */
     protected $numero;
+    
+    protected $bairro;    
+    protected $cep;
+    protected $uf;
+    protected $cidade;
+
+
+
 
     /**
      * @return string
@@ -174,6 +190,59 @@ class Destinatario extends AbstractModel
     public function setTelefone($telefone)
     {
         $this->telefone = $telefone;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getDdd()
+    {
+        return $this->ddd;
+    }
+
+    /**
+     * @param string $ddd
+     */
+    public function setDdd($ddd)
+    {
+        $this->ddd = $ddd;
+    }
+
+    public function getBairro() {
+        return $this->bairro;
+    }
+
+    public function setBairro($bairro) {
+        $this->bairro = $bairro;
+        return $this;
+    }
+
+    public function getCep() {
+        return $this->cep;
+    }
+
+    public function setCep($cep) {
+        $this->cep = $cep;
+        return $this;
+    }
+
+    public function getUf() {
+        return $this->uf;
+    }
+
+    public function setUf($uf) {
+        $this->uf = $uf;
+        return $this;
+    }
+
+
+    public function getCidade() {
+        return $this->cidade;
+    }
+
+    public function setCidade($cidade) {
+        $this->cidade = $cidade;
+        return $this;
     }
 
 

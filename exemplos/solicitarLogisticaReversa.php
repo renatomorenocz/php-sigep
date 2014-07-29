@@ -45,41 +45,63 @@ $config->setCacheOptions(
 
 \PhpSigep\Bootstrap::start($config);
 
-
+ 
 $destinatario = new \PhpSigep\Model\Destinatario();
-$destinatario->setNome('Google Belo Horizonte');
-$destinatario->setLogradouro('Av. Bias Fortes');
-$destinatario->setNumero('382');
-$destinatario->setComplemento('6º andar');
+$destinatario->setNome('Fulano');
+$destinatario->setLogradouro('Qd 301');
+$destinatario->setNumero('10');
+$destinatario->setComplemento('Residencial Central');
+$destinatario->setBairro('Centro');
+$destinatario->setCep('70002900');
+$destinatario->setUf('DF');
+$destinatario->setCidade('Brasília');
 
 $remetente = new \PhpSigep\Model\Remetente();
-$remetente->setNome('Google São Paulo');
-$remetente->setLogradouro('Av. Brigadeiro Faria Lima');
-$remetente->setNumero('3900');
-$remetente->setComplemento('5º andar');
-$remetente->setBairro('Itaim');
-$remetente->setCep('04538-132');
-$remetente->setUf('SP');
-$remetente->setCidade('São Paulo');
+$remetente->setNome('Ciclano');
+$remetente->setLogradouro('Rua João Negrão');
+$remetente->setNumero('1251');
+$remetente->setComplemento('Bloco II');
+$remetente->setBairro('Centro');
+$remetente->setCep('80002900');
+$remetente->setUf('PR');
+$remetente->setCidade('Curitiba');
+$remetente->setSms(false);
 
 $objColeta = array();
 $objColeta[] = new \PhpSigep\Model\ObjetoColeta();       
 
 $coleta = new \PhpSigep\Model\Coleta();
+$coleta->setCklist(\PhpSigep\Model\Coleta::CHECKLIST_CELULAR);
+$coleta->setIdCliente('2544');
+$coleta->setValorDeclarado(100.00);
+$coleta->setAg(5);
+$coleta->setAr(true);
 $coleta->setTipo(\PhpSigep\Model\Coleta::TIPO_AUTORIZACAO_POSTAGEM);
 $coleta->setRemetente($remetente);
 $coleta->setObjetosColeta($objColeta);
 
-$coletas = array($coleta);
+$coleta2 = new \PhpSigep\Model\Coleta();
+$coleta2->setCklist(\PhpSigep\Model\Coleta::CHECKLIST_CELULAR);
+$coleta2->setIdCliente('3030');
+$coleta2->setValorDeclarado(100.00);
+$coleta2->setAg('05/08/2014');
+$coleta2->setAr(false);
+$coleta2->setTipo(\PhpSigep\Model\Coleta::TIPO_COLETA);
+$coleta2->setRemetente($remetente);
+$coleta2->setObjetosColeta($objColeta);
 
-$params = new PhpSigep\Model\SolicitaLogisticaReversa();
+$coletas = array($coleta,$coleta2);
+
+$params = new PhpSigep\Model\SolicitaPostagemReversa();
 $params->setAccessData($accessData);
 $params->setDestinatario($destinatario);
 $params->setServicoDePostagem(new \PhpSigep\Model\ServicoDePostagem(\PhpSigep\Model\ServicoDePostagem::SERVICE_PAC_41068));
 $params->setColetas($coletas);
 
 $phpSigep = new PhpSigep\Services\SoapClient\Real();
-var_dump($phpSigep->solicitaLogisticaReversa($params));
+
+echo '<pre>';
+print_r($phpSigep->solicitaPostagemReversa($params));
 
 
 

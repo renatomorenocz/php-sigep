@@ -1,11 +1,11 @@
 <?php
+
 namespace PhpSigep\Model;
 
 /**
  * @author: Stavarengo
  */
-class Remetente extends AbstractModel
-{
+class Remetente extends AbstractModel {
 
     /**
      * Número do contrato do cliente.
@@ -13,77 +13,113 @@ class Remetente extends AbstractModel
      * @var string
      */
     protected $numeroContrato;
+
     /**
      * Diretoria Regional do contrato do cliente.
      * @var Diretoria
      */
     protected $diretoria;
+
     /**
      * Código administrativo do cliente
      * Max length: 9
      * @var string
      */
     protected $codigoAdministrativo;
+
     /**
      * Nome do remetente
      * Max length: 50
      * @var string
      */
     protected $nome;
+
     /**
      * Logradouro do remetente.
      * Max length: 40
      * @var string
      */
     protected $logradouro;
+
     /**
      * Número da casa, prédio, etc. Parte do endereço do remetente.
      * Max length: 6
      * @var string
      */
     protected $numero;
+
     /**
      * Complemento do endereço.
      * Max length: 20
      * @var string
      */
     protected $complemento;
+
     /**
      * Bairro do endereço.
      * Max length: 20
      * @var string
      */
     protected $bairro;
+
     /**
      * CEP do remetente.
      * Max length: 8
      * @var string
      */
     protected $cep;
+
     /**
      * Cidade do remetente.
      * Max length: 30
      * @var string
      */
     protected $cidade;
+
     /**
      * Unidade de federação.
      * Max length: 2
      * @var string
      */
     protected $uf;
+
     /**
      * Telefone do remetente.
      * Max length: 12
      * @var string
      */
     protected $telefone;
+
+    /**
+     * DDD Destinatário.
+     * Não Obrigatório.
+     * Max length: 3     
+     * @var string
+     */
+    protected $ddd;
+
+    /**
+     * Celular do remetente.
+     * Max length: 12
+     * @var string
+     */
+    protected $celular;
+
+    /**
+     * DDD Destinatário.
+     * Não Obrigatório.
+     * Max length: 3     
+     * @var string
+     */
+    protected $dddCelular;
+
     /**
      * Fax do remetente.
      * Max length: 12
      * @var string
      */
     protected $fax;
+
     /**
      * Email do remetente.
      * Max length: 50
@@ -92,228 +128,284 @@ class Remetente extends AbstractModel
     protected $email;
 
     /**
+     * Sms.
+     * @var bool
+     */
+    protected $sms;
+    
+    
+    /**
+     * Número do CNPJ ou CPF do remetente..
+     * @var bool
+     */
+    protected $identificacao;
+
+
+    /**
      * @return string
      */
-    public function getBairro()
-    {
+    public function getBairro() {
         return $this->bairro;
     }
 
     /**
      * @param string $bairro
      */
-    public function setBairro($bairro)
-    {
+    public function setBairro($bairro) {
         $this->bairro = $bairro;
     }
 
     /**
      * @return string
      */
-    public function getCep()
-    {
+    public function getCep() {
         return $this->cep;
     }
 
     /**
      * @param string $cep
      */
-    public function setCep($cep)
-    {
+    public function setCep($cep) {
         $this->cep = $cep;
     }
 
     /**
      * @return string
      */
-    public function getCidade()
-    {
+    public function getCidade() {
         return $this->cidade;
     }
 
     /**
      * @param string $cidade
      */
-    public function setCidade($cidade)
-    {
+    public function setCidade($cidade) {
         $this->cidade = $cidade;
     }
 
     /**
      * @return string
      */
-    public function getCodigoAdministrativo()
-    {
+    public function getCodigoAdministrativo() {
         return $this->codigoAdministrativo;
     }
 
     /**
      * @param string $codigoAdministrativo
      */
-    public function setCodigoAdministrativo($codigoAdministrativo)
-    {
+    public function setCodigoAdministrativo($codigoAdministrativo) {
         $this->codigoAdministrativo = $codigoAdministrativo;
     }
 
     /**
      * @return string
      */
-    public function getComplemento()
-    {
+    public function getComplemento() {
         return $this->complemento;
     }
 
     /**
      * @param string $complemento
      */
-    public function setComplemento($complemento)
-    {
+    public function setComplemento($complemento) {
         $this->complemento = $complemento;
     }
 
     /**
      * @return \PhpSigep\Model\Diretoria
      */
-    public function getDiretoria()
-    {
+    public function getDiretoria() {
         return $this->diretoria;
     }
 
     /**
      * @param \PhpSigep\Model\Diretoria $diretoria
      */
-    public function setDiretoria($diretoria)
-    {
+    public function setDiretoria($diretoria) {
         $this->diretoria = $diretoria;
     }
 
     /**
      * @return string
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
     /**
      * @param string $email
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
     }
 
     /**
      * @return string
      */
-    public function getFax()
-    {
+    public function getFax() {
         return $this->fax;
     }
 
     /**
      * @param string $fax
      */
-    public function setFax($fax)
-    {
+    public function setFax($fax) {
         $this->fax = $fax;
     }
 
     /**
      * @return string
      */
-    public function getLogradouro()
-    {
+    public function getLogradouro() {
         return $this->logradouro;
     }
 
     /**
      * @param string $logradouro
      */
-    public function setLogradouro($logradouro)
-    {
+    public function setLogradouro($logradouro) {
         $this->logradouro = $logradouro;
     }
 
     /**
      * @return string
      */
-    public function getNome()
-    {
+    public function getNome() {
         return $this->nome;
     }
 
     /**
      * @param string $nome
      */
-    public function setNome($nome)
-    {
+    public function setNome($nome) {
         $this->nome = $nome;
     }
 
     /**
      * @return string
      */
-    public function getNumero()
-    {
+    public function getNumero() {
         return $this->numero;
     }
 
     /**
      * @param string $numero
      */
-    public function setNumero($numero)
-    {
+    public function setNumero($numero) {
         $this->numero = $numero;
     }
 
     /**
      * @return string
      */
-    public function getNumeroContrato()
-    {
+    public function getNumeroContrato() {
         return $this->numeroContrato;
     }
 
     /**
      * @param string $numeroContrato
      */
-    public function setNumeroContrato($numeroContrato)
-    {
+    public function setNumeroContrato($numeroContrato) {
         $this->numeroContrato = $numeroContrato;
     }
 
     /**
      * @return string
      */
-    public function getTelefone()
-    {
+    public function getTelefone() {
         return $this->telefone;
     }
 
     /**
      * @param string $telefone
      */
-    public function setTelefone($telefone)
-    {
+    public function setTelefone($telefone) {
         $this->telefone = $telefone;
     }
 
     /**
      * @return string
      */
-    public function getUf()
-    {
+    public function getDdd() {
+        return $this->ddd;
+    }
+
+    /**
+     * @param string $ddd
+     */
+    public function setDdd($ddd) {
+        $this->ddd = $ddd;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUf() {
         return $this->uf;
     }
 
     /**
      * @param string $uf
      */
-    public function setUf($uf)
-    {
+    public function setUf($uf) {
         $this->uf = $uf;
     }
 
+    /**
+     * @return string
+     */
+    public function getCelular() {
+        return $this->celular;
+    }
+
+    /**
+     * @param string $celular
+     */
+    public function setCelular($celular) {
+        $this->celular = $celular;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDddCelular() {
+        return $this->dddCelular;
+    }
+
+    /**
+     * @param string $dddCelular
+     */
+    public function setDddCelular($dddCelular) {
+        $this->dddCelular = $dddCelular;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSms() {
+        return $this->sms;
+    }
+
+    /**
+     * @param string $sms
+     */
+    public function setSms($sms) {
+        $this->sms = $sms;
+    }
+    
+    
+    /**
+     * @return string
+     */
+    public function getIdentificacao() {
+        return $this->identificacao;
+    }
+
+    /**
+     * @param string $identificacao
+     */
+    public function setIdentificacao($identificacao) {
+        $this->identificacao = $identificacao;
+    }
 
 }
