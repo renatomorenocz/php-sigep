@@ -84,7 +84,7 @@ $coleta->setIdCliente('2544');
 $coleta->setValorDeclarado(100.00);
 $coleta->setAg(5);
 $coleta->setAr(true);
-$coleta->setTipo(\PhpSigep\Model\Coleta::TIPO_AUTORIZACAO_POSTAGEM);
+$coleta->setTipo(\PhpSigep\Model\TipoColeta::TIPO_AUTORIZACAO_POSTAGEM);
 $coleta->setRemetente($remetente);
 $coleta->setObjetosColeta($objsColeta);
 
@@ -96,7 +96,7 @@ $coleta2->setIdCliente('3030');
 $coleta2->setValorDeclarado(100.00);
 $coleta2->setAg('05/08/2014');
 $coleta2->setAr(false);
-$coleta2->setTipo(\PhpSigep\Model\Coleta::TIPO_COLETA);
+$coleta2->setTipo(\PhpSigep\Model\TipoColeta::TIPO_COLETA);
 $coleta2->setRemetente($remetente);
 $coleta2->setObjetosColeta($objsColeta);
 
