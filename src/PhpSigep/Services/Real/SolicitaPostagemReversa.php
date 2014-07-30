@@ -65,7 +65,7 @@ class SolicitaPostagemReversa implements RealServiceInterface {
             }
             
             $postagemReversaResultado = new \PhpSigep\Model\PostagemReversaResultado();
-            $postagemReversaResultado->setPostagenReversas($postagens);
+            $postagemReversaResultado->setPostagenReversas(array_values($postagens));
             
             $result->setResult($postagemReversaResultado);
             
