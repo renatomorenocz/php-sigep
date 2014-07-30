@@ -100,6 +100,11 @@ $coleta2->setTipo(\PhpSigep\Model\Coleta::TIPO_COLETA);
 $coleta2->setRemetente($remetente);
 $coleta2->setObjetosColeta($objsColeta);
 
+$ar = new \PhpSigep\Model\ServicoAdicional();
+$ar->setCodigoServicoAdicional(\PhpSigep\Model\ServicoAdicional::SERVICE_AVISO_DE_RECEBIMENTO);
+
+$coleta2->setServicosAdicionais(array($ar));
+
 $coletas = array($coleta,$coleta2);
 
 $params = new PhpSigep\Model\SolicitaPostagemReversa();
