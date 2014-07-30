@@ -9,15 +9,12 @@ class Coleta extends AbstractModel {
 
     const CHECKLIST_CELULAR = 2;
     const CHECKLIST_ELETRONICO = 4;
-    const TIPO_COLETA = 'C';
-    const TIPO_AUTORIZACAO_POSTAGEM = 'A';
-    const TIPO_COLETA_AUTORIZACAO_POSTAGEM = 'CA';
 
     /**
      * Descrição/Instruções para coleta
      * @var string 
      */
-    protected $descricao;    
+    protected $descricao;
 
     /**
      * Indica que serão impressas vias de checklist.
@@ -134,42 +131,43 @@ class Coleta extends AbstractModel {
 
     public function setDescricao($descricao) {
         $this->descricao = $descricao;
-        return $this;
     }
 
     public function setCklist($cklist) {
         $this->cklist = $cklist;
-        return $this;
     }
 
     public function setIdCliente($idCliente) {
         $this->idCliente = $idCliente;
-        return $this;
     }
 
     public function setTipo($tipo) {
+         if (is_string($tipo)) {
+            $tipo= new \PhpSigep\Model\TipoColeta($tipo);
+        }
+        
+        if (!($tipo instanceof TipoColeta)) {
+            throw new InvalidArgument('tipo deve ser uma string ou uma instância de ' .
+                '\PhpSigep\Model\TipoColeta.');
+        }
+        
         $this->tipo = $tipo;
-        return $this;
     }
 
     public function setValorDeclarado($valorDeclarado) {
         $this->valorDeclarado = $valorDeclarado;
-        return $this;
     }
 
     public function setAr($ar) {
         $this->ar = $ar;
-        return $this;
     }
 
     public function setAg($ag) {
         $this->ag = $ag;
-        return $this;
     }
 
     public function setNumero($numero) {
         $this->numero = $numero;
-        return $this;
     }
 
     /**
@@ -213,9 +211,5 @@ class Coleta extends AbstractModel {
     public function getServicosAdicionais() {
         return (array) $this->servicosAdicionais;
     }
-    
-    
-
-    
 
 }

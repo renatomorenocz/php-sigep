@@ -96,7 +96,7 @@ class SolicitaPostagemReversa implements RealServiceInterface {
 
         foreach ($coletas as $coleta) {            
             $coletasReturn[] = array(
-                'tipo' => $coleta->getTipo(),
+                'tipo' => $coleta->getTipo()->getCodigo(),
                 'numero' => $coleta->getNumero(),
                 'id_cliente' => $coleta->getIdCliente() ,
                 'ag' => $coleta->getAg(),
