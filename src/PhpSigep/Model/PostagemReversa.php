@@ -47,6 +47,15 @@ class PostagemReversa extends AbstractModel {
     }
 
     public function setTipo($tipo) {
+        if (is_string($tipo)) {
+            $tipo = new \PhpSigep\Model\TipoColeta($tipo);
+        }
+
+        if (!($tipo instanceof TipoColeta)) {
+            throw new InvalidArgument('tipo deve ser uma string ou uma instância de ' .
+            '\PhpSigep\Model\TipoColeta.');
+        }
+
         $this->tipo = $tipo;
     }
 
@@ -61,7 +70,7 @@ class PostagemReversa extends AbstractModel {
     public function setObjetos(array $objetos) {
         $this->objetos = $objetos;
     }
-    
+
     public function getPrazo() {
         return $this->prazo;
     }
@@ -85,8 +94,9 @@ class PostagemReversa extends AbstractModel {
     public function setHoraSolicitacao($horaSolicitacao) {
         $this->horaSolicitacao = $horaSolicitacao;
     }
-    
+
     public function addObj($obj) {
         $this->objetos[] = $obj;
     }
+
 }
