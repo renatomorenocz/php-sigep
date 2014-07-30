@@ -125,11 +125,22 @@ class Real implements ServiceInterface
     /**
      *
      * @param \PhpSigep\Model\CancelaPostagemReversa $params
-     * @return \PhpSigep\Services\Result<\PhpSigep\Model\SolicitaLogisticaReversaResultado[]>
+     * @return \PhpSigep\Services\Result
      */
     public function cancelaPostagemReversa(\PhpSigep\Model\CancelaPostagemReversa $params)
     {
         $service = new ServiceImplementation\CancelaPostagemReversa();
+        return $service->execute($params);
+    }
+    
+    /**
+     *
+     * @param \PhpSigep\Model\AcompanhaPostagemReversa $params
+     * @return \PhpSigep\Services\Result
+     */
+    public function acompanhaPostagemReversa(\PhpSigep\Model\AcompanhaPostagemReversa $params)
+    {
+        $service = new ServiceImplementation\AcompanhaPostagemReversa();
         return $service->execute($params);
     }
 }

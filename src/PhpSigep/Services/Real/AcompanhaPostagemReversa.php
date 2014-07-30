@@ -6,23 +6,24 @@ use PhpSigep\Model\AbstractModel;
 use PhpSigep\Services\Exception;
 use PhpSigep\Services\Result;
 
-class CancelaPostagemReversa implements RealServiceInterface {
-
+class AcompanhaPostagemReversa implements RealServiceInterface {
+    
     public function execute(AbstractModel $params) {
-        if (!$params instanceof \PhpSigep\Model\CancelaPostagemReversa) {
+        if (!$params instanceof \PhpSigep\Model\AcompanhaPostagemReversa) {
             throw new InvalidArgument();
         }
 
         $soapArgs = array(
-            'usuario' => $params->getAccessData()->getUsuario(),
-            'senha' => $params->getAccessData()->getSenha(),
-            'codAdministrativo' => $params->getAccessData()->getCodAdministrativo(),
-            'numeroPedido' => $params->getPostagemReversa()->getNumeroColeta(),
-            'tipo' => $params->getPostagemReversa()->getTipo()->getCodigo(),
+            'usuario'             => $params->getAccessData()->getUsuario(),
+            'senha'               => $params->getAccessData()->getSenha(),
+            'codAdministrativo'   => $params->getAccessData()->getCodAdministrativo(),
+            'numeroPedido'        => $params->getPostagemReversa()->getNumeroColeta(),
+            'tipoBusca'           => $params->getTipoBusca(),
+            'tipoSolicitacao'     => $params->getPostagemReversa()->getTipo()->getCodigo()
         );
-
+        
         var_dump($soapArgs);
-
+        
 
         $result = new Result();
 
@@ -32,7 +33,10 @@ class CancelaPostagemReversa implements RealServiceInterface {
                 throw new Exception('Para usar este serviço você precisa setar o nome de usuário e senha.');
             }
 
-            $result = SoapClientFactory::getSoapLogisticaReversa()->cancelarPedido($soapArgs);
+            $result = SoapClientFactory::getSoapLogisticaReversa()->acompanharPedido($soapArgs);
+            
+         
+            
         } catch (\Exception $e) {
             if ($e instanceof \SoapFault) {
                 $result->setIsSoapFault(true);
@@ -47,4 +51,5 @@ class CancelaPostagemReversa implements RealServiceInterface {
         return $result;
     }
 
+  
 }
